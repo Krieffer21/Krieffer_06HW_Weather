@@ -4,8 +4,10 @@ $(document).ready(function() {
      
         $("#search").on("click", function() {
 
+        $("#results").text("");
+
         var City = $("#citySearched").val();
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + City + "&appid=9508f5887b64149ae87a4e8e95cc981b";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
 
         $.ajax({
         url: queryURL,
@@ -17,7 +19,7 @@ $(document).ready(function() {
         //    var uvIndex = $("<span>");
         //    uvIndex.text("UV Index: " + );
         //    $("#results").append(uvIndex);
-        
+
         var wind = $("<span>");
         wind.text("Wind Speed: " + results.wind.speed);
         $("#results").prepend(wind);
@@ -36,12 +38,26 @@ $(document).ready(function() {
         $("#results").prepend(city);
 
         // add todays date
-
+            fiveDayForecast()
         });
 
+        function fiveDayForecast() {
 
-            // var forecast = $("fiveDay").attr("src", results[i] );
+            var fiveDay = $("#forecast").val();
+            var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
 
+            $.ajax({
+            url: queryURL,
+            method: "GET"
+            }).then(function(response) {
+                
+            var results = response;
+
+            // var dayOne = $("<span>");
+            // wind.text("Wind Speed: " + results.wind.speed);
+            // $("#results").prepend(wind);
+    
+        }
 
         });
     }
