@@ -27,7 +27,7 @@ float: left;
 margin: 10px;
 }
 
-button {
+#search {
 float: left;
 margin: 10px;
 border-radius: 10px; 
@@ -57,6 +57,13 @@ margin: 20px;
 text-align: center;
 padding: 20px;
 
+}
+
+span {
+margin: 10px;
+text-align: center;
+padding: 10px;
+float: left;
 }
 
 .fiveDay {
