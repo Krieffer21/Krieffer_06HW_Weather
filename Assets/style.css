@@ -1,27 +1,67 @@
 body {
-
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1;
+    background-color: aliceblue;  
 }
 
 header {
-
+text-align: center;
+color: aliceblue;
+background-color: #1a384a;
+padding: 30px;
+font-size: 48px;
+font-family: 'Open Sans', sans-serif;
 }
 
 .search {
+float: left;
+margin: 10px;
+background-color: lightgray;
+text-align: center;
+padding: 10px;
+}
 
+
+#citySearched {
+float: left;
+margin: 10px;
 }
 
 button {
+float: left;
+margin: 10px;
+border-radius: 10px; 
+background-color: #34a0fd;   
+}
 
+.citiesList {
+float: left;
+align-content: center;
+margin: 15px;
+padding: 10px;
 }
 
 .cityAdded {
-
+background-color: floralwhite;
+margin: 10px;
+text-align: center;
+padding: 10px;
+border-color: black;
+border-radius: 5px;
+border-width: 10px;
 }
 
-.results {
+#results {
+float: right;
+margin: 20px;
+text-align: center;
+padding: 20px;
 
 }
 
 .fiveDay {
-    
+float: right;
+ margin: 20px;
+text-align: center;
+ 
 }

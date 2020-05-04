@@ -9,27 +9,31 @@
 </head>
 <body>
     <header>Weather Dashboard</header>
-    <section class="search">
+    <container class="search">
         <h1>Search for a City:</h1>
             <div>
+                <input id ="citySearched">
                 <!-- add search box to input text -->
                     <button>add search icon here</button>
             </div>
-        <div class="cityAdded"> searched cities will go here</div>
-    </section>
-    <article>
-        <div class="results">
-            <!-- results here -->
+        <div class= citiesList>
+            <ol class="cityAdded"> searched cities will go here</ol>
         </div>
-        <div class="fiveDay">
-            <h1>5-Day Forecast:</h1>
+        </container>
+
+        <container id="results">
+            <p>results  go  here</p>
+
+            <div>
+            <h2>5-Day Forecast:</h2>
             <!-- 5 day forecast here -->
-        </div>
+            </div>
+        </container>
 
     </article>
 
-
-    <script src="https://openweathermap.org/forecast5"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://openweathermap.org/forecast5#5days"></script>
     <script type="text/javascript" src="./Assets/script.js"></script>
 </body>
 </html>
