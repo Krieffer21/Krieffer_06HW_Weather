@@ -52,14 +52,35 @@ $(document).ready(function() {
             }).then(function(response) {
                 
             var results = response;
+            
+            var tomorrow = [
+                moment().add(1,'days').format("YYYY-MM-DD") + "15:00:00",
+                moment().add(2,'days').format("YYYY-MM-DD") + "15:00:00",
+                moment().add(3,'days').format("YYYY-MM-DD") + "15:00:00",
+                moment().add(4,'days').format("YYYY-MM-DD") + "15:00:00",
+                moment().add(5,'days').format("YYYY-MM-DD") + "15:00:00"
+            ];
+            var k = 0;
 
-            // var dayOne = $("<span>");
-            // wind.text("Wind Speed: " + results.wind.speed);
-            // $("#results").prepend(wind);
+            for (let i = 0; i < results.list.length; i++) {
+                if (list[i].dt_txt == tomorrow[k]){
+                k++;
+
+                var dayX = $("<div>");
+                dayX.text("Teperature: " + results.list[i].main.temp_max) ("Humidity: " + results.list[i].main.humidity);
+                $("#results").prepend(dayX);
     
-        }
-
+                if (k == 5) {
+                    break;
+                }
+                }
+            }
+            
         });
-    }
+
+        };
+    });
+
     displayForecast()
+    }
 });
