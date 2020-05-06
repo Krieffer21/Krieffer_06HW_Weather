@@ -19,12 +19,13 @@ $(document).ready(function() {
             var lat = results.coord.lat;
             var lon = results.coord.lon;
 
-            var uv = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
+            var uv = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
 
             $.ajax({
             url: uv,
             method: "GET"
             }).then(function(response) {
+
             var res = response;
     
            var uvIndex = $("<span>");
