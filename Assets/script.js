@@ -7,6 +7,19 @@ $(document).ready(function() {
         $("#results").text("");
 
         var City = $("#citySearched").val();
+
+        var store = localStorage.getItem("list");
+
+//     if (store) {
+//     for (let i = 0; i < store.length; i++) {
+//     }
+// }
+            var cityList = $("<button>");
+            cityList.text(City);
+            $(".cityAdded").append();
+
+
+
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
 
         $.ajax({
@@ -28,28 +41,27 @@ $(document).ready(function() {
 
             var res = response;
     
-           var uvIndex = $("<span>");
+           var uvIndex = $("<p>");
            uvIndex.text("UV Index: " + res.value);
            $("#results").append(uvIndex);
             });
 
-        var wind = $("<span>");
+        var wind = $("<p>");
         wind.text("Wind Speed: " + results.wind.speed + " mph");
         $("#results").prepend(wind);
 
-        var humidity = $("<span>");
+        var humidity = $("<p>");
         humidity.text("Humidity: " + results.main.humidity + "%");
         $("#results").prepend(humidity);
         
-        var temp = $("<span>");
+        var temp = $("<p>");
         temp.text("Temperature: " + results.main.temp + "\xB0 F");
         $("#results").prepend(temp);
          
-        var city = $("<span>");
+        var city = $("<p>");
         city.text(results.name + moment().format("  (MMMM Do YYYY)"));
         $("#results").prepend(city);
 
-        // add todays date
             fiveDayForecast();
         });
 
@@ -79,8 +91,9 @@ $(document).ready(function() {
                 k++; 
 
                 var dayX = $("<div>");
-                dayX.text("Teperature: " + results.list[i].main.temp_max + "\xB0 F" +
-                 " \n Humidity: " + results.list[i].main.humidity + "%");
+                dayX.attr("class","fivForecast");
+                dayX.html(moment().add(k,'days').format("MMMM Do YYYY") + "<p>Teperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
+                 "<p>Humidity: " + results.list[i].main.humidity + "% </p>");
                 $("#forecast").append(dayX);
     
                 if (k == 5) {

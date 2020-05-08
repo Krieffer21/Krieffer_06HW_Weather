@@ -65,14 +65,12 @@ padding: 20px;
      
 }
 
-span {
+p {
 margin: 10px;
 text-align: left;
-float: left;
-width: 100%;
 }
 
-div {
+.fivForecast {
 margin: 10px;
 background-color: dodgerblue;
 border-radius: 5px;
@@ -81,11 +79,4 @@ padding-top: 30px;
 padding-bottom: 30px;
 float: left;
 text-align: left;
-}
-
-.fiveDay {
-float: right;
-margin: 20px;
-text-align: center;
- 
 }
