@@ -1,13 +1,16 @@
 $(document).ready(function () {
 
     function displayForecast() {
+        var currentList= [];
 
-        $("#search").on("click", function () {
+        $(".searchBtn").on("click", function () {
+            var City = $("#citySearched").val();
+
+            function currentWeather(City) {
 
             $("#results").text("");
             $("#forecast").text("");
 
-            var City = $("#citySearched").val();
 
             var store = localStorage.getItem("list");
 
@@ -15,17 +18,20 @@ $(document).ready(function () {
                 for (let i = 0; i < store.length; i++) {
                 }
             }
-            else {
-                store = [];
-            }
 
-            if (!(store.includes(City))) {
-                store.push(City);
+            if (!currentList.includes(City) && City !== "" ) {
+                currentList.push(City);
 
-            // add click function
                 var cityList = $("<button>");
                 cityList.text(City);
                 $(".cityAdded").append(cityList);
+            
+                cityList.on("click", function(event)
+                {
+                    var btnText = $(event.target).text();
+                    currentWeather(btnText);
+                    fiveDayForecast(btnText);        
+                });
             }
 
             var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
@@ -70,10 +76,10 @@ $(document).ready(function () {
                 city.text(results.name + moment().format("  (MMMM Do YYYY)"));
                 $("#results").prepend(city);
 
-                fiveDayForecast();
             });
+            }
 
-            function fiveDayForecast() {
+            function fiveDayForecast(City) {
                 var fiveDay = $("#forecast").val();
 
                 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
@@ -100,7 +106,7 @@ $(document).ready(function () {
 
                             var dayX = $("<div>");
                             dayX.attr("class", "fivForecast");
-                            dayX.html(moment().add(k, 'days').format("MMMM Do YYYY") + "<p>Teperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
+                            dayX.html(moment().add(k, 'days').format("MMMM Do YYYY") + "<p>Temperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
                                 "<p>Humidity: " + results.list[i].main.humidity + "% </p>");
                             $("#forecast").append(dayX);
 
@@ -110,11 +116,13 @@ $(document).ready(function () {
                         }
                     }
 
-
-
                 });
 
             }
+
+            currentWeather(City);
+            fiveDayForecast(City);
+
         });
     }
     displayForecast()

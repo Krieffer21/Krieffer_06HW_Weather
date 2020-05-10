@@ -12,7 +12,7 @@ padding: 30px;
 font-size: 48px;
 font-family: 'Open Sans', sans-serif;
 }
-
+    
 .search {
 float: left;
 margin: 10px;
@@ -48,7 +48,12 @@ text-align: center;
 padding: 10px;
 border-color: black;
 border-radius: 5px;
-border-width: 10px;
+float: left;
+}
+
+table {
+    border: 1px solid black;
+    
 }
 
 #results {
