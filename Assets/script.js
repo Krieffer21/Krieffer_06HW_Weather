@@ -1,6 +1,24 @@
 $(document).ready(function () {
-    
-    var currentList= [];
+
+    var currentList = [];
+
+    var store = JSON.parse(localStorage.getItem("list"));
+
+    if (store) {
+        for (let i = 0; i < store.length; i++) {
+
+            var cityList = $("<button>");
+            cityList.text(store[i]);
+            $(".cityAdded").append(cityList);
+
+            cityList.on("click", function (event) {
+                var btnText = $(event.target).text();
+                currentWeather(btnText);
+                fiveDayForecast(btnText);
+            });
+        }
+        currentList = store.concat(currentList);
+    }
 
     function displayForecast() {
 
@@ -17,40 +35,22 @@ $(document).ready(function () {
     function currentWeather(City) {
 
         $("#results").text("");
-        $("#forecast").text("");
+        $("#forecast").html("<h2>5-Day Forecast:</h2>");
 
-
-        // var store = localStorage.getItem("list");
-
-        // if (store) {
-        //     for (let i = 0; i < store.length; i++) {
-                
-        //         var cityList = $("<button>");
-        //         cityList.text(store[i]);
-        //         $(".cityAdded").append(cityList);
-            
-        //         cityList.on("click", function(event)
-        //         {
-        //             var btnText = $(event.target).text();
-        //             currentWeather(btnText);
-        //             fiveDayForecast(btnText);        
-        //         });
-        //     }
-        // }
-
-        if (!currentList.includes(City) && City !== "" ) {
+        if (!currentList.includes(City) && City !== "") {
             currentList.push(City);
 
             var cityList = $("<button>");
             cityList.text(City);
             $(".cityAdded").append(cityList);
-        
-            cityList.on("click", function(event)
-            {
+
+            cityList.on("click", function (event) {
                 var btnText = $(event.target).text();
                 currentWeather(btnText);
-                fiveDayForecast(btnText);        
+                fiveDayForecast(btnText);
             });
+
+            localStorage.setItem("list", JSON.stringify(currentList));
         }
 
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
@@ -96,47 +96,46 @@ $(document).ready(function () {
             $("#results").prepend(city);
 
         });
-        }
+    }
 
-        function fiveDayForecast(City) {
-            var fiveDay = $("#forecast").val();
+    function fiveDayForecast(City) {
 
-            var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + City + "&units=imperial&appid=9508f5887b64149ae87a4e8e95cc981b";
 
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
 
-                var results = response;
+            var results = response;
 
-                var tomorrow = [
-                    moment().add(1, 'days').format("YYYY-MM-DD") + " 15:00:00",
-                    moment().add(2, 'days').format("YYYY-MM-DD") + " 15:00:00",
-                    moment().add(3, 'days').format("YYYY-MM-DD") + " 15:00:00",
-                    moment().add(4, 'days').format("YYYY-MM-DD") + " 15:00:00",
-                    moment().add(5, 'days').format("YYYY-MM-DD") + " 15:00:00"
-                ];
-                var k = 0;
+            var tomorrow = [
+                moment().add(1, 'days').format("YYYY-MM-DD") + " 15:00:00",
+                moment().add(2, 'days').format("YYYY-MM-DD") + " 15:00:00",
+                moment().add(3, 'days').format("YYYY-MM-DD") + " 15:00:00",
+                moment().add(4, 'days').format("YYYY-MM-DD") + " 15:00:00",
+                moment().add(5, 'days').format("YYYY-MM-DD") + " 15:00:00"
+            ];
+            var k = 0;
 
-                for (let i = 0; i < results.list.length; i++) {
-                    if (results.list[i].dt_txt === tomorrow[k]) {
-                        k++;
+            for (let i = 0; i < results.list.length; i++) {
+                if (results.list[i].dt_txt === tomorrow[k]) {
+                    k++;
 
-                        var dayX = $("<div>");
-                        dayX.attr("class", "fivForecast");
-                        dayX.html(moment().add(k, 'days').format("MMMM Do YYYY") + "<p>Temperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
-                            "<p>Humidity: " + results.list[i].main.humidity + "% </p>");
-                        $("#forecast").append(dayX);
+                    var dayX = $("<div>");
+                    dayX.attr("class", "fivForecast");
+                    dayX.html(moment().add(k, 'days').format("MMMM Do YYYY") + "<p>Temperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
+                        "<p>Humidity: " + results.list[i].main.humidity + "% </p>");
+                    $("#forecast").append(dayX);
 
-                        if (k == 5) {
-                            break;
-                        }
+                    if (k == 5) {
+                        break;
                     }
                 }
+            }
 
-            });
+        });
 
-        }
+    }
 
 });
