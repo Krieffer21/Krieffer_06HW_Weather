@@ -92,7 +92,7 @@ $(document).ready(function () {
             $("#results").prepend(temp);
 
             var city = $("<p>");
-            city.text(results.name + moment().format("  (MMMM Do YYYY)"));
+            city.html(results.name + moment().format("  (MMMM Do YYYY)") + "<img src= http://openweathermap.org/img/w/" + results.weather[0].icon + ".png >");
             $("#results").prepend(city);
 
         });
@@ -124,7 +124,7 @@ $(document).ready(function () {
 
                     var dayX = $("<div>");
                     dayX.attr("class", "fivForecast");
-                    dayX.html(moment().add(k, 'days').format("MMMM Do YYYY") + "<p>Temperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
+                    dayX.html(moment().add(k, 'days').format("MMMM Do YYYY") + "<img src= http://openweathermap.org/img/w/" + results.list[i].weather[0].icon + ".png >" + "<p>Temperature: " + results.list[i].main.temp_max + "\xB0 F </p>" +
                         "<p>Humidity: " + results.list[i].main.humidity + "% </p>");
                     $("#forecast").append(dayX);
 
