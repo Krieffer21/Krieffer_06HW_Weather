@@ -19,12 +19,11 @@ margin: 10px;
 background-color: lightgray;
 text-align: center;
 padding: 10px;
-margin-right: 50%;
 }
 
 #citySearched {
 float: left;
-margin: 10px;
+margin: 20px;
 padding: 10px;
 align-self: center;
 }
@@ -89,39 +88,41 @@ padding: 20px;
      
 }
 
-p {
-margin: 10px;
-text-align: left;
-padding: 10px;
-}
-
 .fivForecast {
 margin: 10px;
 background-color: dodgerblue;
 border-radius: 5px;
 padding: 20px;
-padding-top: 30px;
-padding-bottom: 30px;
 float: left;
 text-align: left;
 }
 
 .green {
-    background-color: green;
+background-color: green;
+text-align: left;
+padding: 10px;
 }
 
 .yellow {
-    background-color: yellow;
+background-color: yellow;
+text-align: left;
+padding: 10px;
 }
 
 .orange {
-    background-color: orange;
+background-color: orange;
+text-align: left;
+padding: 10px;
 }
 
 .red {
-    background-color: red;
+background-color: red;
+text-align: left;
+padding: 10px;
 }
 
 .violet {
-    background-color: violet;
+background-color: violet;
+text-align: left;
+padding: 10px;
 }
