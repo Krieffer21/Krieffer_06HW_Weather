@@ -19,6 +19,7 @@ margin: 10px;
 background-color: lightgray;
 text-align: center;
 padding: 10px;
+margin-right: 50%;
 }
 
 #citySearched {
@@ -40,6 +41,8 @@ float: left;
 align-content: center;
 margin: 15px;
 padding: 10px;
+display: flex;
+
 }
 
 .cityAdded {
@@ -50,14 +53,19 @@ padding: 10px;
 border-color: #8f8e9e;
 border-radius: 3px;
 float: left;
+width: 100%;
 }
 
 button {
-    padding: 10px;
-    margin: 10px;
-    background-color: #1a384a;
-    color: honeydew;
-    border-radius: 5px;
+padding: 15px;
+margin: 15px;
+background-color: #1a384a;
+color: honeydew;
+border-radius: 5px;
+float: left;
+padding-left: 50px;
+padding-right: 50px;
+font-size: medium;
 }
 
 table {
@@ -96,4 +104,24 @@ padding-top: 30px;
 padding-bottom: 30px;
 float: left;
 text-align: left;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.red {
+    background-color: red;
+}
+
+.violet {
+    background-color: violet;
 }

@@ -77,6 +77,25 @@ $(document).ready(function () {
                 var uvIndex = $("<p>");
                 uvIndex.text("UV Index: " + res.value);
                 $("#results").append(uvIndex);
+
+                var uvColor = parseInt(res.value);
+
+                if (uvColor <= 2) {
+                    uvIndex.attr("class", "green");
+                }
+                else if (uvColor == 3|| uvColor ==4|| uvColor ==5) {
+                    uvIndex.attr("class", "yellow");
+                }
+                else if (uvColor == 6|| uvColor ==7) {
+                    uvIndex.attr("class", "orange");
+                }
+                else if (uvColor == 8|| uvColor == 9|| uvColor == 10) {
+                    uvIndex.attr("class", "red");
+                }
+                else {
+                    uvIndex.attr("class", "violet");
+                }
+
             });
 
             var wind = $("<p>");
@@ -92,9 +111,8 @@ $(document).ready(function () {
             $("#results").prepend(temp);
 
             var city = $("<p>");
-            city.html(results.name + moment().format("  (MMMM Do YYYY)") + "<img src= http://openweathermap.org/img/w/" + results.weather[0].icon + ".png >");
+            city.html("<h2>" + results.name + moment().format((" (MMMM Do YYYY)") + "</h2>") + "<img src= http://openweathermap.org/img/w/" + results.weather[0].icon + ".png >");
             $("#results").prepend(city);
-
         });
     }
 
