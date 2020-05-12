@@ -12,7 +12,8 @@ padding: 30px;
 font-size: 48px;
 font-family: 'Open Sans', sans-serif;
 }
-    
+   
+/* search container */
 .search {
 float: left;
 margin: 10px;
@@ -21,6 +22,7 @@ text-align: center;
 padding: 10px;
 }
 
+/* input box for the users searches */
 #citySearched {
 float: left;
 margin: 20px;
@@ -28,6 +30,7 @@ padding: 10px;
 align-self: center;
 }
 
+/* styling the search button */
 #search {
 float: left;
 margin: 10px;
@@ -35,6 +38,7 @@ border-radius: 10px;
 background-color: #34a0fd;   
 }
 
+/* list of cities previously searched for */
 .citiesList {
 float: left;
 align-content: center;
@@ -44,6 +48,7 @@ display: flex;
 
 }
 
+/* div for the previously searched buttons */
 .cityAdded {
 background-color: floralwhite;
 margin: 10px;
@@ -55,6 +60,7 @@ float: left;
 width: 100%;
 }
 
+/* styling the searched city buttons */
 button {
 padding: 15px;
 margin: 15px;
@@ -67,11 +73,7 @@ padding-right: 50px;
 font-size: medium;
 }
 
-table {
-    border: 1px solid black;
-    
-}
-
+/* current weather results */
 #results {
 margin: 20px;
 float: left;
@@ -80,14 +82,15 @@ margin-right: auto;
 font-size: large;
 }
 
+/* 5 day forecast results */
 #forecast {
 float: right;
 margin: 20px;
 text-align: center;
-padding: 20px;
-     
+padding: 20px;   
 }
 
+/* styling the boxes that display the 5 day forecast */
 .fivForecast {
 margin: 10px;
 background-color: dodgerblue;
@@ -97,6 +100,7 @@ float: left;
 text-align: left;
 }
 
+/* color coding for the uv index */
 .green {
 background-color: green;
 text-align: left;
