@@ -5,16 +5,16 @@
 
 ### UV Index
   
-![]()
+![](https://github.com/Krieffer21/Krieffer_06HW_Weather/blob/master/images/uvIndex.png)
 
 ### Five day forecast
   
-![]()
+![](https://github.com/Krieffer21/Krieffer_06HW_Weather/blob/master/images/fiveday.png)
 
 ### Current day
   
-![]()
+![](https://github.com/Krieffer21/Krieffer_06HW_Weather/blob/master/images/currentCity.png)
 
 ### Weather gif
   
-![]()
+![](https://github.com/Krieffer21/Krieffer_06HW_Weather/blob/master/images/weatherApp.gif)
